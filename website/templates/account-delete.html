@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <a href="{% url 'account_list' %}">Back</a>
+
+    <form method="post">
+        {% csrf_token %}
+        Are you sure you want to delete "{{ object }}" ?
+        <input type="submit" value="Submit" />
+
+
+    </form>
+
+{% endblock %}

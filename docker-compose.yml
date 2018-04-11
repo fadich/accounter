@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+
+  db:
+    image: postgres
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+
+  adminer:
+    image: adminer
+    container_name: "adminer"
+    restart: always
+    ports:
+      - "8089:8080"
+    depends_on:
+      - db
+
+  accounter:
+    build: .
+    container_name: "accounter"
+#    command: bash -c "python manage.py runserver 0:8000"
+    volumes:
+      - .:/opt/django
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db

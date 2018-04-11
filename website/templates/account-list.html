@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+
+    <h3>Accounts</h3>
+    <ul>
+        {% for account in object_list %}
+            <li>
+                <a href="{% url "account_edit" account.id %}">{{ account.name }}</a>:
+                {{ account.currency.symbol }}{{ account.total|floatformat:2|intcomma }} ...
+{#                <a href="{% url "account_edit" account.id %}">edit</a>#}
+                <a href="{% url "account_delete" account.id %}">delete</a>
+                &nbsp;&nbsp;
+                <a href="{% url "account_income_transaction_new" account_id=account.id %}">+</a> |
+                <a href="{% url "account_expenditure_transaction_new" account_id=account.id %}">-</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url "account_new" %}">New Account</a>
+
+{% endblock %}

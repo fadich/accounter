@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <a href="{% url 'account_list' %}">Back to list</a>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h3>
+        <span>Transactions</span>
+        <a href="{% url "account_income_transaction_new" account_id=account.id %}">+</a> |
+        <a href="{% url "account_expenditure_transaction_new" account_id=account.id %}">-</a>
+    </h3>
+
+    {% for transaction in account.transaction_set.all %}
+        <div>
+            <span>{{ account.currency.symbol }}{{ transaction.value }}</span>
+            {% if transaction.comment %}
+                <span>({{ transaction.comment }})</span>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+{% endblock %}
