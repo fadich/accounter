@@ -21,7 +21,7 @@ services:
   accounter:
     build: .
     container_name: "accounter"
-#    command: bash -c "python manage.py runserver 0:8000"
+    command: bash -c "python manage.py runserver 0:8000"
     volumes:
       - .:/opt/django
     ports:

@@ -11,11 +11,13 @@
         <input type="submit" value="Submit">
     </form>
 
-    <h3>
-        <span>Transactions</span>
-        <a href="{% url "account_income_transaction_new" account_id=account.id %}">+</a> |
-        <a href="{% url "account_expenditure_transaction_new" account_id=account.id %}">-</a>
-    </h3>
+    {% if account.pk %}
+        <h3>
+            <span>Transactions</span>
+            <a href="{% url "account_income_transaction_new" account_id=account.id %}">+</a> |
+            <a href="{% url "account_expenditure_transaction_new" account_id=account.id %}">-</a>
+        </h3>
+    {% endif %}
 
     {% for transaction in account.transaction_set.all %}
         <div>
