@@ -1,3 +1,5 @@
+{% extends "admin/base.html" %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,8 +11,14 @@
 </head>
 <body>
 
+{% block breadcrumbs %}{% endblock %}
+
 {% block content %}
+    {{ block.super }}
 {% endblock %}
+
+{% block sidebar %}{% endblock %}
+
 
 </body>
 </html>
