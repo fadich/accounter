@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_8rh**ish^_@w$jtk@72#fk-tq9(-&2%f$@&+j#m-5bo$6)g^h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'accounter.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'db',
+        'NAME': 'ytcvjcet_accounter_db',
+        'USER': 'ytcvjcet',
+        'PASSWORD': 'Rj325PuCA0',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -106,6 +106,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATICFILES_DIRS = ( os.path.join('static'), )
 
 LOGIN_URL = '/admin'
